@@ -2,4 +2,5 @@ rootProject.name = 'SeasonAppraiser'
 include ':app'
 include ':server.guru'
 include ':shared.serial'
-include ':feature.feed'
+include ':feature.feed',
+	':feature.search'
