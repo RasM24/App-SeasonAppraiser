@@ -3,4 +3,5 @@ include ':app'
 include ':server.guru'
 include ':shared.serial'
 include ':feature.feed',
-	':feature.search'
+	':feature.search',
+	':feature.detail-matrix'
