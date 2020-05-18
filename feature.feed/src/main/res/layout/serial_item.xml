@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/serial_item"
+	android:layout_width="120dp"
+	android:layout_height="160dp"
+	android:layout_margin="8dp">
+
+	<ImageView
+		android:id="@+id/poster"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:scaleType="centerCrop"
+		tools:src="@tools:sample/avatars" />
+
+	<!--TODO Вынести все в стиль-->
+	<TextView
+		android:id="@+id/name"
+		style="@style/TextAppearance.MaterialComponents.Body2"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_gravity="bottom"
+		android:background="#7000"
+		android:gravity="center"
+		android:padding="8dp"
+		android:textColor="@android:color/white"
+		tools:text="Крутой сериал" />
+</androidx.cardview.widget.CardView>

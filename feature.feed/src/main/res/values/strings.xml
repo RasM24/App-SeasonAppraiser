@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="feed_title_popular_serial">Популярное</string>
+	<string name="feed_title_recommended_serial">Рекомендуемое</string>
+	<string name="feed_title_best_serial">Лучшее</string>
+</resources>
