@@ -1,3 +1,4 @@
-rootProject.name='SeasonAppraiser'
+rootProject.name = 'SeasonAppraiser'
 include ':app'
 include ':server.guru'
+include ':shared.serial'
