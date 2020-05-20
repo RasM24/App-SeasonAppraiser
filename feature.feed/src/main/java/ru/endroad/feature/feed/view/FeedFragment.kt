@@ -1,12 +1,18 @@
 package ru.endroad.feature.feed.view
 
 import android.os.Bundle
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.IModelItem
 import com.mikepenz.fastadapter.adapters.ItemAdapter
 import kotlinx.android.synthetic.main.feed_fragment.*
+import org.koin.android.viewmodel.ext.android.viewModel
+import ru.endroad.camp.extension.hide
 import ru.endroad.camp.fragment.CampFragment
 import ru.endroad.feature.feed.R
+import ru.endroad.feature.feed.presenter.FeedViewModel
+import ru.endroad.shared.serial.entity.Serial
 
 class FeedFragment : CampFragment() {
 
@@ -17,6 +23,8 @@ class FeedFragment : CampFragment() {
 	}
 
 	override val layout = R.layout.feed_fragment
+
+	private val viewModel by viewModel<FeedViewModel>()
 
 	private var popularSerialList = ItemAdapter<IModelItem<*, *>>()
 	private var recommendedSerialList = ItemAdapter<IModelItem<*, *>>()
@@ -44,12 +52,29 @@ class FeedFragment : CampFragment() {
 	}
 
 	override fun setupViewComponents() {
-		list_popular.adapter = popularAdapter
-		list_recommended.adapter = recommendedAdapter
-		list_best.adapter = bestAdapter
-
-		list_popular.setHasFixedSize(true)
-		list_recommended.setHasFixedSize(true)
-		list_best.setHasFixedSize(true)
+		if (viewModel.configuration.popularSerial) setupPopularSerialList() else list_popular.hide()
+		if (viewModel.configuration.recommendedSerial) setupRecommendedSerialList() else list_recommended.hide()
+		setupBestSerialList()
 	}
+
+	private fun setupPopularSerialList() {
+		list_popular.adapter = popularAdapter
+		list_popular.setHasFixedSize(true)
+		viewModel.popularSerialList.subcribe { popularSerialList.set(it.map(::SerialItem)) }
+	}
+
+	private fun setupRecommendedSerialList() {
+		list_recommended.adapter = recommendedAdapter
+		list_recommended.setHasFixedSize(true)
+		viewModel.recommendedSerialList.subcribe { recommendedSerialList.set(it.map(::SerialItem)) }
+	}
+
+	private fun setupBestSerialList() {
+		list_best.adapter = bestAdapter
+		list_best.setHasFixedSize(true)
+		viewModel.bestSerialList.subcribe { bestSerialList.set(it.map(::SerialItem)) }
+	}
+
+	private inline fun LiveData<List<Serial>>.subcribe(crossinline handler: (List<Serial>) -> Unit) =
+		observe(viewLifecycleOwner, Observer { handler(it) })
 }
