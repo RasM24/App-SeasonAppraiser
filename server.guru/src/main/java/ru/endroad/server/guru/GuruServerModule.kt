@@ -1,6 +1,7 @@
 package ru.endroad.server.guru
 
-import org.koin.core.module.Module
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
 import org.koin.experimental.builder.singleBy
 import retrofit2.Retrofit
@@ -15,16 +16,22 @@ import ru.endroad.shared.serial.data.PopularSerialsDataSource
 import ru.endroad.shared.serial.data.RecommendedSerialsDataSource
 
 val guruServerModule = module {
-	retrofitApi<BrowseApi>()
+	single {
+		val logging = HttpLoggingInterceptor()
+		logging.level = HttpLoggingInterceptor.Level.BODY
+		val httpClient = OkHttpClient.Builder()
+		httpClient.addInterceptor(logging)
+
+		Retrofit.Builder()
+			.baseUrl(SERVER_URL)
+			.addConverterFactory(GsonConverterFactory.create())
+			.client(httpClient.build())
+			.build()
+	}
+
+	single { get<Retrofit>().create(BrowseApi::class.java) }
 
 	singleBy<BestSerialsDataSource, BestSerialsDataSourceImpl>()
 	singleBy<PopularSerialsDataSource, PopularSerialsDataSourceImpl>()
 	singleBy<RecommendedSerialsDataSource, RecommendedSerialsDataSourceImpl>()
 }
-
-private val retrofit = Retrofit.Builder()
-	.baseUrl(SERVER_URL)
-	.addConverterFactory(GsonConverterFactory.create())
-	.build()
-
-private inline fun <reified API : Any> Module.retrofitApi() = single { retrofit.create(API::class.java) }

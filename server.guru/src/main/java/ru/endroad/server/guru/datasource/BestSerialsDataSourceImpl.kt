@@ -8,5 +8,5 @@ import ru.endroad.shared.serial.entity.Serial
 internal class BestSerialsDataSourceImpl(private val api: BrowseApi) : BestSerialsDataSource {
 
 	override suspend fun get(page: Int): List<Serial> =
-		api.getSerials(page).map(::convertModel)
+		api.getSerials(page).series.map(::convertModel)
 }

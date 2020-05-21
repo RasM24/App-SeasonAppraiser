@@ -2,7 +2,9 @@ package ru.endroad.server.guru.model
 
 import ru.endroad.shared.serial.entity.Serial
 
-internal class SerialModel(
+internal class SerialResponseModel(val series: List<SerialModel>)
+
+data class SerialModel(
 	val id: String,
 	val imdbRating: Float,
 	val name: String,
