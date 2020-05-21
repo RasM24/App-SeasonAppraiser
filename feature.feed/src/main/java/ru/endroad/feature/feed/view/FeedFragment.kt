@@ -59,19 +59,18 @@ class FeedFragment : CampFragment() {
 
 	private fun setupPopularSerialList() {
 		list_popular.adapter = popularAdapter
-		list_popular.setHasFixedSize(true)
+		//list_popular.setHasFixedSize(true)
 		viewModel.popularSerialList.subcribe { popularSerialList.set(it.map(::SerialItem)) }
 	}
 
 	private fun setupRecommendedSerialList() {
 		list_recommended.adapter = recommendedAdapter
-		list_recommended.setHasFixedSize(true)
+		//list_recommended.setHasFixedSize(true)
 		viewModel.recommendedSerialList.subcribe { recommendedSerialList.set(it.map(::SerialItem)) }
 	}
 
 	private fun setupBestSerialList() {
 		list_best.adapter = bestAdapter
-		list_best.setHasFixedSize(true)
 		viewModel.bestSerialList.subcribe { bestSerialList.set(it.map(::SerialItem)) }
 	}
 

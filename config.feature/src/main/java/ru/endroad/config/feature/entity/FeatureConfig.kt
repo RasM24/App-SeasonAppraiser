@@ -1,6 +1,6 @@
 package ru.endroad.config.feature.entity
 
 data class FeatureConfig(
-	val popularSerial: Boolean = false,
-	val recommendedSerial: Boolean = false
+	val popularSerial: Boolean = true,
+	val recommendedSerial: Boolean = true
 )

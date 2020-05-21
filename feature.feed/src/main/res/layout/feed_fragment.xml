@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
-	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	xmlns:tools="http://schemas.android.com/tools">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
 	android:orientation="vertical">
 
 	<TextView
@@ -13,14 +17,12 @@
 		android:text="@string/feed_title_popular_serial" />
 
 	<androidx.recyclerview.widget.RecyclerView
-		android:id="@+id/list_recommended"
+		android:id="@+id/list_popular"
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
+		android:layout_height="176dp"
 		android:orientation="horizontal"
-		tools:listitem="@layout/serial_item"
-		app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
-
-	</androidx.recyclerview.widget.RecyclerView>
+		app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+		tools:listitem="@layout/serial_item" />
 
 	<TextView
 		style="@style/TextAppearance.MaterialComponents.Headline6"
@@ -29,12 +31,14 @@
 		android:text="@string/feed_title_recommended_serial" />
 
 	<androidx.recyclerview.widget.RecyclerView
-		android:id="@+id/list_popular"
+		android:id="@+id/list_recommended"
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
+		android:layout_height="176dp"
 		android:orientation="horizontal"
-		tools:listitem="@layout/serial_item"
-		app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+		app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+		tools:listitem="@layout/serial_item">
+
+	</androidx.recyclerview.widget.RecyclerView>
 
 	<TextView
 		style="@style/TextAppearance.MaterialComponents.Headline6"
@@ -44,10 +48,12 @@
 
 	<androidx.recyclerview.widget.RecyclerView
 		android:id="@+id/list_best"
-		tools:listitem="@layout/serial_item"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
+		app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
 		app:spanCount="2"
-		app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"/>
+		tools:listitem="@layout/serial_item" />
 
 </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

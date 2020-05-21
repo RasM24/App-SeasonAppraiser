@@ -5,6 +5,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.mikepenz.fastadapter.items.ModelAbstractItem
+import com.squareup.picasso.Picasso
 import ru.endroad.feature.feed.R
 import ru.endroad.shared.serial.entity.Serial
 
@@ -19,7 +20,7 @@ class SerialItem(serial: Serial) : ModelAbstractItem<Serial, SerialItem.ViewHold
 	override fun bindView(holder: ViewHolder, payloads: List<Any>) {
 		super.bindView(holder, payloads)
 		holder.name.text = model.name
-		//holder.poster.load()
+		Picasso.get().load(model.posterUrl).centerCrop().fit().into(holder.poster)
 	}
 
 	class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
