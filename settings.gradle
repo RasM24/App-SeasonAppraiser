@@ -5,4 +5,4 @@ include ':shared.serial'
 include ':config.feature'
 include ':feature.feed',
 	':feature.search',
-	':feature.detail-matrix'
+	':feature.detail'
