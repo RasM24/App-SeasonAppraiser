@@ -9,11 +9,12 @@ import ru.endroad.shared.serial.entity.Serial
 
 class SeriesDetailViewModel(
 	private val getSeriesDetail: GetSerialDetailUseCase,
-	private val configuration: FeatureConfig
+	private val configuration: FeatureConfig,
+	seriesId: String
 ) : ViewModel() {
 
 	val seriesDetail: LiveData<Serial> = liveData {
-		val series = getSeriesDetail()
+		val series = getSeriesDetail(seriesId)
 		emit(series)
 	}
 }

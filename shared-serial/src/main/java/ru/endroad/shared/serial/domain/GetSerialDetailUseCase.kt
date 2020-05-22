@@ -4,5 +4,5 @@ import ru.endroad.shared.serial.data.SeriesDataSource
 import ru.endroad.shared.serial.entity.Serial
 
 class GetSerialDetailUseCase(private val seriesDataSource: SeriesDataSource) {
-	suspend operator fun invoke(): Serial = seriesDataSource.get()
+	suspend operator fun invoke(seriesId: String): Serial = seriesDataSource.get(seriesId)
 }

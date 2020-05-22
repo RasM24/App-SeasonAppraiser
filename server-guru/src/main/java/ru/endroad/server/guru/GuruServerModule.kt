@@ -6,8 +6,10 @@ import org.koin.dsl.module
 import org.koin.experimental.builder.singleBy
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
 import ru.endroad.server.guru.api.BrowseApi
 import ru.endroad.server.guru.api.SERVER_URL
+import ru.endroad.server.guru.api.SeriesApi
 import ru.endroad.server.guru.datasource.BestSerialsDataSourceImpl
 import ru.endroad.server.guru.datasource.PopularSerialsDataSourceImpl
 import ru.endroad.server.guru.datasource.RecommendedSerialsDataSourceImpl
@@ -29,7 +31,8 @@ val guruServerModule = module {
 			.build()
 	}
 
-	single { get<Retrofit>().create(BrowseApi::class.java) }
+	single { get<Retrofit>().create<BrowseApi>() }
+	single { get<Retrofit>().create<SeriesApi>() }
 
 	singleBy<BestSerialsDataSource, BestSerialsDataSourceImpl>()
 	singleBy<PopularSerialsDataSource, PopularSerialsDataSourceImpl>()
