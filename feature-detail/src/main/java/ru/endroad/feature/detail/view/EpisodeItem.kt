@@ -29,10 +29,10 @@ class EpisodeItem(episode: Episode) : ModelAbstractItem<Episode, EpisodeItem.Vie
 
 	//TODO вынести в UseCase
 	private fun resolveBackgroundColor(rating: Double): Int = when {
-		rating > 8 -> Color.parseColor("00FF00")
-		rating > 7 -> Color.parseColor("ADFF2F")
-		rating > 5 -> Color.parseColor("FFA500")
-		rating > 3 -> Color.parseColor("B22222")
-		else       -> Color.parseColor("808080")
+		rating > 8 -> Color.parseColor("#00FF00")
+		rating > 7 -> Color.parseColor("#ADFF2F")
+		rating > 5 -> Color.parseColor("#FFA500")
+		rating > 3 -> Color.parseColor("#B22222")
+		else       -> Color.parseColor("#808080")
 	}
 }

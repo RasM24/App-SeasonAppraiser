@@ -13,9 +13,11 @@ import ru.endroad.server.guru.api.SeriesApi
 import ru.endroad.server.guru.datasource.BestSerialsDataSourceImpl
 import ru.endroad.server.guru.datasource.PopularSerialsDataSourceImpl
 import ru.endroad.server.guru.datasource.RecommendedSerialsDataSourceImpl
+import ru.endroad.server.guru.datasource.SeriesDataSourceImpl
 import ru.endroad.shared.serial.data.BestSerialsDataSource
 import ru.endroad.shared.serial.data.PopularSerialsDataSource
 import ru.endroad.shared.serial.data.RecommendedSerialsDataSource
+import ru.endroad.shared.serial.data.SeriesDataSource
 
 val guruServerModule = module {
 	single {
@@ -37,4 +39,5 @@ val guruServerModule = module {
 	singleBy<BestSerialsDataSource, BestSerialsDataSourceImpl>()
 	singleBy<PopularSerialsDataSource, PopularSerialsDataSourceImpl>()
 	singleBy<RecommendedSerialsDataSource, RecommendedSerialsDataSourceImpl>()
+	singleBy<SeriesDataSource, SeriesDataSourceImpl>()
 }

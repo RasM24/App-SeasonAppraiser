@@ -14,7 +14,8 @@ dependencies {
 
 	// Koin for Kotlin
 	implementation "ru.endroad:koin-extension:0.1.0"
-	implementation "org.koin:koin-core:2.0.1"
+	implementation "org.koin:koin-core:2.1.5"
+	implementation "org.koin:koin-core-ext:2.1.5"
 	implementation "org.koin:koin-androidx-viewmodel:2.0.0"
 
 	testImplementation 'junit:junit:4.12'

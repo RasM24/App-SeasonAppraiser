@@ -26,9 +26,9 @@ class FeedFragment : CampFragment() {
 
 	private val viewModel by viewModel<FeedViewModel>()
 
-	private var popularSerialList = ItemAdapter<IModelItem<*, *>>()
-	private var recommendedSerialList = ItemAdapter<IModelItem<*, *>>()
-	private var bestSerialList = ItemAdapter<IModelItem<*, *>>()
+	private var popularSerialList = ItemAdapter<IModelItem<Serial, *>>()
+	private var recommendedSerialList = ItemAdapter<IModelItem<Serial, *>>()
+	private var bestSerialList = ItemAdapter<IModelItem<Serial, *>>()
 
 	private var popularAdapter = FastAdapter.with(this.popularSerialList)
 	private var recommendedAdapter = FastAdapter.with(this.recommendedSerialList)
@@ -59,18 +59,28 @@ class FeedFragment : CampFragment() {
 
 	private fun setupPopularSerialList() {
 		list_popular.adapter = popularAdapter
-		//list_popular.setHasFixedSize(true)
+		popularAdapter.onClickListener = { _, _, item, _ ->
+			viewModel.openSerial(item.model.id)
+			true
+		}
 		viewModel.popularSerialList.subcribe { popularSerialList.set(it.map(::SerialItem)) }
 	}
 
 	private fun setupRecommendedSerialList() {
 		list_recommended.adapter = recommendedAdapter
-		//list_recommended.setHasFixedSize(true)
+		recommendedAdapter.onClickListener = { _, _, item, _ ->
+			viewModel.openSerial(item.model.id)
+			true
+		}
 		viewModel.recommendedSerialList.subcribe { recommendedSerialList.set(it.map(::SerialItem)) }
 	}
 
 	private fun setupBestSerialList() {
 		list_best.adapter = bestAdapter
+		bestAdapter.onClickListener = { _, _, item, _ ->
+			viewModel.openSerial(item.model.id)
+			true
+		}
 		viewModel.bestSerialList.subcribe { bestSerialList.set(it.map(::SerialItem)) }
 	}
 
