@@ -1,6 +1,20 @@
 dependencies {
+	implementation project(':feature.feed')
+	implementation project(':server.guru')
+	implementation project(':shared.serial')
+	implementation project(':config.feature')
+
 	implementation "androidx.appcompat:appcompat:1.1.0"
 	implementation 'com.google.android.material:material:1.1.0'
+
+	//Camp
+	implementation "ru.endroad:camp:0.3.0"
+	implementation "ru.endroad.camp:fragment-navigation:1.1.0"
+
+	// Koin for Kotlin
+	implementation "ru.endroad:koin-extension:0.1.0"
+	implementation "org.koin:koin-core:2.0.1"
+	implementation "org.koin:koin-androidx-viewmodel:2.0.0"
 
 	testImplementation 'junit:junit:4.12'
 	androidTestImplementation 'androidx.test.ext:junit:1.1.1'

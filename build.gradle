@@ -19,7 +19,9 @@ allprojects {
 	}
 }
 def javaLibs = [
-	'server.guru'
+	'server.guru',
+	'config.feature',
+	'shared.serial'
 ]
 
 subprojects {
