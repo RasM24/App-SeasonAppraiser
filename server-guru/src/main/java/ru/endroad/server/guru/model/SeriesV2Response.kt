@@ -26,12 +26,8 @@ internal fun convertModel(seriesModel: SeriesV2Response): Serial =
 	)
 
 private val SeriesV2Response.seasonList: List<Season>
-	get() {
-		val seasonList = mutableListOf<Season>()
-		repeat(this.seasons) {
-			seasonList.add(matrixEpisodes.takeSeason(it))
-		}
-		return seasonList
+	get() = List(seasons) {
+		matrixEpisodes.takeSeason(it+1)
 	}
 
 private fun List<MatrixEpisodes>.takeSeason(seasonNumber: Int): Season =

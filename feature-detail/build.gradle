@@ -1,6 +1,7 @@
 dependencies {
 	implementation project(':shared-serial')
 	implementation project(':config-feature')
+	implementation project(':view-matrix')
 
 	implementation "ru.endroad:camp:0.3.0"
 	implementation "ru.endroad:camp-extension-list:0.1.0"
