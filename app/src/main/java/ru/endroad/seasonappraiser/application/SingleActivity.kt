@@ -1,27 +1,27 @@
 package ru.endroad.seasonappraiser.application
 
 import android.os.Bundle
-import org.koin.core.context.loadKoinModules
-import org.koin.core.context.unloadKoinModules
-import org.koin.dsl.module
+import org.koin.android.ext.android.inject
 import ru.endroad.camp.activity.CampActivity
 import ru.endroad.feature.feed.view.FeedFragment
 import ru.endroad.navigation.changeRoot
 import ru.endroad.seasonappraiser.R
+import ru.endroad.seasonappraiser.routing.NavigatorHolder
 
 class SingleActivity : CampActivity() {
+
 	override val layout = R.layout.base_layout
 
-	private val supportFragmentManagerModule = module { factory { supportFragmentManager } }
+	private val navigatorHolder by inject<NavigatorHolder>()
 
 	override fun onCreate(savedInstanceState: Bundle?) {
-		loadKoinModules(supportFragmentManagerModule)
+		navigatorHolder.fragmentManager = supportFragmentManager
 		super.onCreate(savedInstanceState)
 	}
 
-	override fun onStop() {
-		unloadKoinModules(supportFragmentManagerModule)
-		super.onStop()
+	override fun onDestroy() {
+		navigatorHolder.fragmentManager = null
+		super.onDestroy()
 	}
 
 	override fun onFirstCreate() = supportFragmentManager.changeRoot(FeedFragment(), R.id.root)

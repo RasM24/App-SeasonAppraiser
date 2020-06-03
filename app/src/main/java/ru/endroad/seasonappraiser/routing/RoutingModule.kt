@@ -5,5 +5,7 @@ import org.koin.experimental.builder.singleBy
 import ru.endroad.feature.feed.router.FeedSeriesRouter
 
 val routingModule = module {
+	single { NavigatorHolder() }
+
 	singleBy<FeedSeriesRouter, FeedSeriesRouterImpl>()
 }
