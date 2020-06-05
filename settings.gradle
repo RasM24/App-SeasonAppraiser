@@ -4,5 +4,6 @@ include ':server-guru'
 include ':shared-serial'
 include ':config-feature'
 include ':feature-feed',
-	':feature-search',
-	':feature-detail'
+		':feature-search',
+		':feature-detail',
+		':feture-navigation'
