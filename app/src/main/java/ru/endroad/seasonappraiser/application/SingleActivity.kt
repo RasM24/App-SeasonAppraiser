@@ -3,6 +3,7 @@ package ru.endroad.seasonappraiser.application
 import android.os.Bundle
 import org.koin.android.ext.android.inject
 import ru.endroad.camp.activity.CampActivity
+import ru.endroad.seasonappraiser.feature.navigation.AppBarFragment
 import ru.endroad.feature.feed.view.FeedFragment
 import ru.endroad.navigation.changeRoot
 import ru.endroad.seasonappraiser.R
@@ -24,5 +25,8 @@ class SingleActivity : CampActivity() {
 		super.onDestroy()
 	}
 
-	override fun onFirstCreate() = supportFragmentManager.changeRoot(FeedFragment(), R.id.root)
+	override fun onFirstCreate() {
+		supportFragmentManager.changeRoot(AppBarFragment(), R.id.root)
+		supportFragmentManager.changeRoot(FeedFragment(), R.id.content)
+	}
 }

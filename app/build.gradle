@@ -1,4 +1,5 @@
 dependencies {
+	implementation project(':feature-navigation')
 	implementation project(':feature-feed')
 	implementation project(':feature-detail')
 	implementation project(':feature-search')

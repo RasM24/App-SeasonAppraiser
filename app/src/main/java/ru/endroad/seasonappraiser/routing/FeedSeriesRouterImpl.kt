@@ -10,5 +10,5 @@ class FeedSeriesRouterImpl(private val navigatorHolder: NavigatorHolder) : FeedS
 
 	override val fragmentManager get() = navigatorHolder.fragmentManager ?: throw RuntimeException()
 
-	override fun openSeries(seriesId: String) = forwardTo(SeriesDetailMatrixFragment.newInstance(seriesId), R.id.root)
+	override fun openSeries(seriesId: String) = forwardTo(SeriesDetailMatrixFragment.newInstance(seriesId), R.id.content)
 }

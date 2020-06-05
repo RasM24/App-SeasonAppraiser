@@ -6,4 +6,4 @@ include ':config-feature'
 include ':feature-feed',
 		':feature-search',
 		':feature-detail',
-		':feture-navigation'
+		':feature-navigation'
