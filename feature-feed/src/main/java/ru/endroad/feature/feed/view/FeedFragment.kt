@@ -1,6 +1,9 @@
 package ru.endroad.feature.feed.view
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.mikepenz.fastadapter.FastAdapter
@@ -23,6 +26,8 @@ class FeedFragment : CampFragment() {
 	}
 
 	override val layout = R.layout.feed_fragment
+
+	override var toolbarMenu: Int? = R.menu.feed_menu
 
 	private val viewModel by viewModel<FeedViewModel>()
 
@@ -82,6 +87,11 @@ class FeedFragment : CampFragment() {
 			true
 		}
 		viewModel.bestSerialList.subcribe { bestSerialList.set(it.map(::SerialItem)) }
+	}
+
+	override fun onOptionsItemSelected(item: MenuItem): Boolean {
+		if (item.itemId == R.id.menu_search) viewModel.openSearchScreen()
+		return true
 	}
 
 	private inline fun LiveData<List<Serial>>.subcribe(crossinline handler: (List<Serial>) -> Unit) =

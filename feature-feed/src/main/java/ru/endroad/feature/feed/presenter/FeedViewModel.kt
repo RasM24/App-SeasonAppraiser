@@ -33,4 +33,5 @@ class FeedViewModel(
 	}
 
 	fun openSerial(id: String) = feedSeriesRouter.openSeries(id)
+	fun openSearchScreen() = feedSeriesRouter.openSearchScreen()
 }
