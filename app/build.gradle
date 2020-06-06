@@ -1,6 +1,8 @@
 dependencies {
+	implementation project(':feature-navigation')
 	implementation project(':feature-feed')
 	implementation project(':feature-detail')
+	implementation project(':feature-search')
 	implementation project(':server-guru')
 	implementation project(':shared-serial')
 	implementation project(':config-feature')

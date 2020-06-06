@@ -10,14 +10,8 @@ import retrofit2.create
 import ru.endroad.server.guru.api.BrowseApi
 import ru.endroad.server.guru.api.SERVER_URL
 import ru.endroad.server.guru.api.SeriesApi
-import ru.endroad.server.guru.datasource.BestSerialsDataSourceImpl
-import ru.endroad.server.guru.datasource.PopularSerialsDataSourceImpl
-import ru.endroad.server.guru.datasource.RecommendedSerialsDataSourceImpl
-import ru.endroad.server.guru.datasource.SeriesDataSourceImpl
-import ru.endroad.shared.serial.data.BestSerialsDataSource
-import ru.endroad.shared.serial.data.PopularSerialsDataSource
-import ru.endroad.shared.serial.data.RecommendedSerialsDataSource
-import ru.endroad.shared.serial.data.SeriesDataSource
+import ru.endroad.server.guru.datasource.*
+import ru.endroad.shared.serial.data.*
 
 val guruServerModule = module {
 	single {
@@ -40,4 +34,5 @@ val guruServerModule = module {
 	singleBy<PopularSerialsDataSource, PopularSerialsDataSourceImpl>()
 	singleBy<RecommendedSerialsDataSource, RecommendedSerialsDataSourceImpl>()
 	singleBy<SeriesDataSource, SeriesDataSourceImpl>()
+	singleBy<SerialsDataSource, SerialsDataSourceImpl>()
 }

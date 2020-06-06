@@ -1,13 +1,17 @@
 package ru.endroad.seasonappraiser.routing
 
-import androidx.fragment.app.FragmentManager
-import ru.endroad.feature.detail.view.SeriesDetailFragment
+import ru.endroad.feature.detail.view.SeriesDetailMatrixFragment
 import ru.endroad.feature.feed.router.FeedSeriesRouter
+import ru.endroad.feature.search.view.SearchFragment
 import ru.endroad.navigation.routing.FragmentRouting
-import ru.endroad.navigation.routing.changeRoot
+import ru.endroad.navigation.routing.forwardTo
 import ru.endroad.seasonappraiser.R
 
-class FeedSeriesRouterImpl(override val fragmentManager: FragmentManager) : FeedSeriesRouter, FragmentRouting {
+class FeedSeriesRouterImpl(private val navigatorHolder: NavigatorHolder) : FeedSeriesRouter, FragmentRouting {
 
-	override fun openSeries(seriesId: String) = changeRoot(SeriesDetailFragment.newInstance(seriesId), R.id.root)
+	override val fragmentManager get() = navigatorHolder.fragmentManager ?: throw RuntimeException()
+
+	override fun openSeries(seriesId: String) = forwardTo(SeriesDetailMatrixFragment.newInstance(seriesId), R.id.content)
+
+	override fun openSearchScreen() = forwardTo(SearchFragment(), R.id.content)
 }

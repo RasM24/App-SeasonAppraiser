@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="cell_rating_ideal">#4099BF</color>
+	<color name="cell_rating_awesome">#4D7326</color>
+	<color name="cell_rating_good">#849B24</color>
+	<color name="cell_rating_normal">#CCB800</color>
+	<color name="cell_rating_bad">#CC7A00</color>
+	<color name="cell_rating_awful">#CD3333</color>
+	<color name="cell_rating_none">#666666</color>
+</resources>
