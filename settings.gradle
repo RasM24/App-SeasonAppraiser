@@ -7,3 +7,4 @@ include ':feature-feed',
 		':feature-search',
 		':feature-detail',
 		':feature-navigation'
+include ':design'
