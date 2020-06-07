@@ -1,8 +1,6 @@
 package ru.endroad.feature.search.presenter
 
-import android.text.Editable
-import android.text.TextWatcher
-import android.widget.TextView
+import android.widget.SearchView
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -21,7 +19,7 @@ class SearchViewModel(
 	//TODO обработчик ошибок
 	val serialList = MutableLiveData<List<Serial>>()
 
-	fun set(textView: TextView) {
+	fun set(textView: SearchView) {
 		viewModelScope.launch {
 			textView.textChangeFlow
 				.filter { it.length > 2 }
@@ -35,16 +33,16 @@ class SearchViewModel(
 
 	fun openSerial(id: String) = searchSeriesRouter.openSeries(id)
 
-	private val TextView.textChangeFlow: Flow<String>
+	private val SearchView.textChangeFlow: Flow<String>
 		get() = callbackFlow<String> {
-			val textWatcher = object : TextWatcher {
-				override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-				override fun afterTextChanged(s: Editable?) {}
-				override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-					offer(s?.toString() ?: "")
+			val textWatcher = object : SearchView.OnQueryTextListener {
+				override fun onQueryTextSubmit(query: String) = false
+				override fun onQueryTextChange(s: String): Boolean {
+					offer(s)
+					return true
 				}
 			}
-			addTextChangedListener(textWatcher)
-			awaitClose { removeTextChangedListener(textWatcher) }
+			setOnQueryTextListener(textWatcher)
+			awaitClose {  }
 		}.buffer(Channel.CONFLATED)
 }
