@@ -1,31 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:id="@+id/serial_item"
-	android:layout_marginLeft="8dp"
-	android:layout_marginRight="8dp"
-	android:layout_width="120dp"
-	android:layout_height="160dp"
-	android:layout_margin="8dp">
+	android:layout_width="match_parent"
+	android:layout_height="120dp"
+	android:layout_marginLeft="16dp"
+	android:layout_marginRight="16dp"
+	android:layout_marginTop="8dp"
+	android:layout_marginBottom="8dp"
+	app:cardCornerRadius="4dp">
 
-	<ImageView
-		android:id="@+id/poster"
-		android:foreground="?android:attr/selectableItemBackgroundBorderless"
+	<androidx.constraintlayout.widget.ConstraintLayout
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:scaleType="centerCrop"
-		tools:src="@tools:sample/avatars" />
+		android:layout_height="match_parent">
 
-	<!--TODO Вынести все в стиль-->
-	<TextView
-		android:id="@+id/name"
-		style="@style/TextAppearance.MaterialComponents.Body2"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:layout_gravity="bottom"
-		android:background="?transparentBackground"
-		android:gravity="center"
-		android:padding="8dp"
-		android:textColor="@android:color/white"
-		tools:text="Крутой сериал" />
+		<ImageView
+			android:id="@+id/poster"
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:scaleType="centerCrop"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintDimensionRatio="17:25"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			tools:src="@tools:sample/avatars" />
+
+		<!--TODO Вынести все в стиль-->
+		<TextView
+			android:id="@+id/name"
+			style="@style/TextAppearance.MaterialComponents.Body1"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="8dp"
+			android:layout_marginTop="16dp"
+			android:textColor="@android:color/white"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toEndOf="@+id/poster"
+			app:layout_constraintTop_toTopOf="parent"
+			tools:text="Крутой сериал" />
+
+		<TextView
+			android:id="@+id/rating"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="8dp"
+			android:layout_marginTop="8dp"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toEndOf="@+id/poster"
+			app:layout_constraintTop_toBottomOf="@+id/name"
+			tools:text="Рейтинг: 8.8" />
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.cardview.widget.CardView>

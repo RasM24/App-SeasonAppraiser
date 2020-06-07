@@ -20,11 +20,13 @@ class SerialItem(serial: Serial) : ModelAbstractItem<Serial, SerialItem.ViewHold
 	override fun bindView(holder: ViewHolder, payloads: List<Any>) {
 		super.bindView(holder, payloads)
 		holder.name.text = model.name
+		holder.rating.text = model.rating.toString()
 		Picasso.get().load(model.posterUrl).centerCrop().fit().into(holder.poster)
 	}
 
 	class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 		val name: TextView = view.findViewById(R.id.name)
+		val rating: TextView = view.findViewById(R.id.rating)
 		val poster: ImageView = view.findViewById(R.id.poster)
 	}
 }
