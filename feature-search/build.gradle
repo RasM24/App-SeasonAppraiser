@@ -1,4 +1,5 @@
 dependencies {
+	implementation project(':design')
 	implementation project(':shared-serial')
 
 	implementation "ru.endroad:camp:0.3.0"

@@ -7,4 +7,5 @@
 	android:gravity="center"
 	android:maxLines="1"
 	android:orientation="vertical"
+	android:textColor="?accentColor"
 	tools:text="S1" />

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!--TODO вынести цвета в jarmark -->
+	<color name="accentColor">#f6c700</color>
+	<color name="criticalColor">#F68E00</color>
+	<color name="warningColor">#F62100</color>
+
+	<color name="colorPrimary">#082213</color>
+	<color name="colorPrimaryDark">#03160B</color>
+	<color name="transparentDark">#7000</color>
+</resources>

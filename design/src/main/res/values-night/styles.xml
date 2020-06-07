@@ -1,0 +1,21 @@
+<resources>
+
+	<!-- Base application theme. -->
+
+	<style name="MainTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+		<item name="android:forceDarkAllowed">true</item>
+
+		<item name="colorPrimary">@color/colorPrimary</item>
+		<item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+		<item name="colorAccent">@color/accentColor</item>
+
+		<item name="windowActionBar">false</item>
+		<item name="windowNoTitle">true</item>
+
+		<item name="accentColor">@color/accentColor</item>
+		<item name="criticalColor">@color/criticalColor</item>
+		<item name="warningColor">@color/warningColor</item>
+		<item name="transparentBackground">@color/transparentDark</item>
+	</style>
+
+</resources>

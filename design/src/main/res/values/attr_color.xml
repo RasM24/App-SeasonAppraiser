@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<attr name="accentColor" format="color" />
+	<attr name="criticalColor" format="color" />
+	<attr name="warningColor" format="color" />
+	<attr name="transparentBackground" format="color" />
+</resources>
