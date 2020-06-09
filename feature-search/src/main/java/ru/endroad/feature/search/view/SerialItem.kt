@@ -9,6 +9,7 @@ import com.squareup.picasso.Picasso
 import ru.endroad.feature.search.R
 import ru.endroad.shared.serial.entity.Serial
 
+//TODO Добавить к дизайну рейтинга звездочку
 class SerialItem(serial: Serial) : ModelAbstractItem<Serial, SerialItem.ViewHolder>(serial) {
 
 	override val type = R.id.serial_item
