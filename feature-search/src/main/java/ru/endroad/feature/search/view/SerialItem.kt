@@ -20,7 +20,7 @@ class SerialItem(serial: Serial) : ModelAbstractItem<Serial, SerialItem.ViewHold
 	override fun bindView(holder: ViewHolder, payloads: List<Any>) {
 		super.bindView(holder, payloads)
 		holder.name.text = model.name
-		holder.rating.text = model.rating.toString()
+		holder.rating.text = String.format("%.2f",model.rating)
 		Picasso.get().load(model.posterUrl).centerCrop().fit().into(holder.poster)
 	}
 

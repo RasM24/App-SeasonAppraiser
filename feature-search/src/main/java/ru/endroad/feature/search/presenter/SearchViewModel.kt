@@ -22,7 +22,7 @@ class SearchViewModel(
 	fun set(textView: SearchView) {
 		viewModelScope.launch {
 			textView.textChangeFlow
-				.filter { it.length > 2 }
+				.filter { it.length > 1 }
 				.debounce(100)
 				.collect {
 					val serial = getSerialListByNameUseCase(it)
